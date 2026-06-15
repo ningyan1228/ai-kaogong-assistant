@@ -1,15 +1,15 @@
 :root {
-  --bg: #f6f8fb;
+  --bg: #f7faf8;
   --surface: #ffffff;
-  --surface-soft: #eef6f3;
-  --text: #1f2937;
+  --surface-soft: #edf7f3;
+  --text: #1f2a37;
   --muted: #64748b;
-  --line: #dbe4ee;
+  --line: #d8e5de;
   --primary: #16735f;
   --primary-dark: #0f5d4d;
-  --accent: #2f6fed;
+  --accent: #2c6fbb;
   --warn: #a15c07;
-  --shadow: 0 12px 30px rgba(26, 48, 73, 0.08);
+  --shadow: 0 12px 30px rgba(30, 56, 42, 0.08);
   --radius: 8px;
 }
 
@@ -23,7 +23,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
   line-height: 1.65;
   background:
-    linear-gradient(180deg, rgba(22, 115, 95, 0.08), rgba(246, 248, 251, 0) 340px),
+    linear-gradient(180deg, rgba(22, 115, 95, 0.1), rgba(247, 250, 248, 0) 360px),
     var(--bg);
 }
 
@@ -36,7 +36,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.94);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(16px);
 }
@@ -97,6 +97,20 @@ a {
   padding: 38px 20px 56px;
 }
 
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  margin-bottom: 14px;
+  padding: 4px 10px;
+  color: var(--primary-dark);
+  background: var(--surface-soft);
+  border: 1px solid #cce7df;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 14px;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
@@ -127,6 +141,16 @@ a {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 24px;
+}
+
+.guide-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.guide-list li {
+  margin: 8px 0;
 }
 
 .hero-panel h2 {
@@ -175,6 +199,10 @@ a {
   gap: 16px;
 }
 
+.card-grid.five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
 .card {
   min-height: 170px;
   padding: 20px;
@@ -197,6 +225,28 @@ a {
 .card .link {
   color: var(--primary-dark);
   font-weight: 700;
+}
+
+.resource-banner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  margin-top: 28px;
+  padding: 22px;
+  background: #f0f8f4;
+  border: 1px solid #cce7df;
+  border-radius: var(--radius);
+}
+
+.resource-banner h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.resource-banner p {
+  margin: 0;
+  color: var(--muted);
 }
 
 .page-title {
@@ -331,6 +381,42 @@ textarea:focus {
   min-height: 360px;
 }
 
+.result-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.copy-status {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.copy-btn {
+  min-height: 36px;
+  padding: 7px 12px;
+  color: var(--primary-dark);
+  background: #e9f5f1;
+  border: 1px solid #cce7df;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background: #ddf0ea;
+}
+
+.copy-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
 .empty-state,
 .notice {
   color: var(--muted);
@@ -438,6 +524,36 @@ textarea:focus {
   font-size: 14px;
 }
 
+.resource-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.calendar-item {
+  padding: 16px;
+  background: #fbfdfc;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.calendar-item strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--primary-dark);
+}
+
+.calendar-item span {
+  color: var(--muted);
+}
+
 .footer {
   margin-top: 42px;
   color: var(--muted);
@@ -494,8 +610,14 @@ pre {
   }
 
   .card-grid,
-  .materials-grid {
+  .card-grid.five,
+  .materials-grid,
+  .calendar-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resource-banner {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -523,7 +645,9 @@ pre {
   }
 
   .card-grid,
+  .card-grid.five,
   .materials-grid,
+  .calendar-grid,
   .checkbox-grid {
     grid-template-columns: 1fr;
   }

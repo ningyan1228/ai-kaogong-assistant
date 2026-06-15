@@ -89,6 +89,17 @@ function renderMarkdown(markdown) {
   return `<div class="markdown-result">${html.join("")}</div>`;
 }
 
+function renderResult(resultEl, markdown) {
+  resultEl.dataset.rawResult = markdown || "";
+  resultEl.innerHTML = `
+    <div class="result-toolbar">
+      <span class="copy-status" aria-live="polite">已生成结果</span>
+      <button class="copy-btn" type="button" data-copy-result>复制结果</button>
+    </div>
+    ${renderMarkdown(markdown)}
+  `;
+}
+
 function getCheckedValues(form, name) {
   return Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map((item) => item.value);
 }
@@ -106,7 +117,53 @@ function clearLoading(button) {
 }
 
 function showError(resultEl, message) {
+  resultEl.dataset.rawResult = "";
   resultEl.innerHTML = `<div class="error">${escapeHtml(message)}</div>`;
+}
+
+async function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.left = "-9999px";
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  textarea.remove();
+}
+
+function initCopyButtons() {
+  document.addEventListener("click", async (event) => {
+    const button = event.target.closest("[data-copy-result]");
+    if (!button) return;
+
+    const resultEl = button.closest(".result-card")?.querySelector("[data-raw-result]");
+    const text = resultEl?.dataset.rawResult || "";
+    const status = button.closest(".result-toolbar")?.querySelector(".copy-status");
+
+    if (!text) return;
+
+    button.disabled = true;
+    try {
+      await copyText(text);
+      if (status) status.textContent = "已复制到剪贴板";
+      button.textContent = "已复制";
+      window.setTimeout(() => {
+        button.textContent = "复制结果";
+        if (status) status.textContent = "已生成结果";
+        button.disabled = false;
+      }, 1800);
+    } catch (_) {
+      if (status) status.textContent = "复制失败，请手动选中复制";
+      button.disabled = false;
+    }
+  });
 }
 
 async function postJson(path, payload) {
@@ -158,7 +215,7 @@ function initPlannerForm() {
     setLoading(resultEl, button, "AI 正在为你拆解备考节奏...");
     try {
       const data = await postJson("/api/plan", payload);
-      resultEl.innerHTML = renderMarkdown(data.result || "暂未生成内容，请稍后重试。");
+      renderResult(resultEl, data.result || "暂未生成内容，请稍后重试。");
     } catch (error) {
       showError(resultEl, error.message || "生成失败，请检查 Deno 后端地址和环境变量。");
     } finally {
@@ -191,7 +248,7 @@ function initWrongForm() {
     setLoading(resultEl, button, "AI 正在分析错因和避坑方法...");
     try {
       const data = await postJson("/api/wrong", payload);
-      resultEl.innerHTML = renderMarkdown(data.result || "暂未生成内容，请稍后重试。");
+      renderResult(resultEl, data.result || "暂未生成内容，请稍后重试。");
     } catch (error) {
       showError(resultEl, error.message || "复盘失败，请检查 Deno 后端地址和环境变量。");
     } finally {
@@ -201,5 +258,6 @@ function initWrongForm() {
 }
 
 setActiveNav();
+initCopyButtons();
 initPlannerForm();
 initWrongForm();
