@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>每日任务 - AI考公备考助手</title><link rel="stylesheet" href="style.css"></head>
+  <body>
+    <header class="site-header"><nav class="nav"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span>AI考公备考助手</span></a><div class="nav-links"><a href="index.html">首页</a><a href="planner.html">AI规划</a><a href="daily.html">每日任务</a><a href="xingce.html">行测专项</a><a href="shenlun.html">申论素材</a><a href="wrong.html">错题复盘</a><a href="job.html">岗位选择</a><a href="interview.html">面试备考</a><a href="guide.html">入门指南</a><a href="about.html">关于本站</a></div></nav></header>
+    <main class="container">
+      <section class="page-title"><span class="eyebrow">本地工具 · 不消耗 API</span><h1>每日任务</h1><p>根据备考阶段、学习时间和薄弱模块，快速生成今日学习清单。</p></section>
+      <section class="layout">
+        <form id="dailyForm" class="form-card">
+          <h2>今日条件</h2>
+          <div class="form-grid">
+            <div class="field"><label for="stage">备考阶段</label><select id="stage" name="stage"><option value="入门期">入门期</option><option value="强化期">强化期</option><option value="冲刺期">冲刺期</option></select></div>
+            <div class="field"><label for="studyTime">学习时间</label><select id="studyTime" name="studyTime"><option value="1小时">1小时</option><option value="2小时">2小时</option><option value="3小时">3小时</option><option value="4小时+">4小时+</option></select></div>
+            <div class="field"><div class="fieldset-title">薄弱模块</div><div class="checkbox-grid"><label class="check-item"><input type="checkbox" name="weakModules" value="言语理解">言语理解</label><label class="check-item"><input type="checkbox" name="weakModules" value="判断推理">判断推理</label><label class="check-item"><input type="checkbox" name="weakModules" value="资料分析">资料分析</label><label class="check-item"><input type="checkbox" name="weakModules" value="数量关系">数量关系</label><label class="check-item"><input type="checkbox" name="weakModules" value="常识判断">常识判断</label><label class="check-item"><input type="checkbox" name="weakModules" value="申论">申论</label></div></div>
+            <div class="actions"><button class="btn" type="submit">生成今日任务</button><button class="btn secondary" type="reset">重填</button></div>
+          </div>
+        </form>
+        <aside class="result-card"><h2>今日任务结果</h2><div id="dailyResult" class="empty-state">生成后会展示今日行测任务、申论任务、刷题量、复盘任务和提醒。</div></aside>
+      </section>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>

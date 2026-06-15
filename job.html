@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>岗位选择 - AI考公备考助手</title><link rel="stylesheet" href="style.css"></head>
+  <body>
+    <header class="site-header"><nav class="nav"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span>AI考公备考助手</span></a><div class="nav-links"><a href="index.html">首页</a><a href="planner.html">AI规划</a><a href="daily.html">每日任务</a><a href="xingce.html">行测专项</a><a href="shenlun.html">申论素材</a><a href="wrong.html">错题复盘</a><a href="job.html">岗位选择</a><a href="interview.html">面试备考</a><a href="guide.html">入门指南</a><a href="about.html">关于本站</a></div></nav></header>
+    <main class="container">
+      <section class="page-title"><span class="eyebrow">本地工具 · 不消耗 API</span><h1>岗位选择助手</h1><p>用规则帮你梳理报考方向、筛选建议、三不限风险和备考侧重点。</p></section>
+      <section class="layout">
+        <form id="jobForm" class="form-card">
+          <h2>个人条件</h2>
+          <div class="form-grid">
+            <div class="field"><label for="degree">学历</label><select id="degree" name="degree"><option value="专科">专科</option><option value="本科">本科</option><option value="硕士及以上">硕士及以上</option></select></div>
+            <div class="field"><label for="major">专业</label><input id="major" name="major" placeholder="例如：汉语言文学、法学、计算机"></div>
+            <div class="field"><label for="graduate">应届/往届</label><select id="graduate" name="graduate"><option value="应届">应届</option><option value="往届">往届</option></select></div>
+            <div class="field"><label for="politics">政治面貌</label><select id="politics" name="politics"><option value="群众">群众</option><option value="共青团员">共青团员</option><option value="中共党员">中共党员</option></select></div>
+            <div class="field"><label for="region">目标地区</label><input id="region" name="region" placeholder="例如：江苏、广东、成都"></div>
+            <div class="field"><label for="township">是否接受乡镇岗</label><select id="township" name="township"><option value="yes">接受</option><option value="no">不接受</option></select></div>
+            <div class="field"><label for="remote">是否接受异地</label><select id="remote" name="remote"><option value="yes">接受</option><option value="no">不接受</option></select></div>
+            <div class="actions"><button class="btn" type="submit">生成岗位建议</button><button class="btn secondary" type="reset">重填</button></div>
+          </div>
+        </form>
+        <aside class="result-card"><h2>岗位建议</h2><div id="jobResult" class="empty-state">生成后会展示适合报考方向、岗位筛选建议、三不限风险提醒、竞争避坑建议和备考侧重点。</div></aside>
+      </section>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>

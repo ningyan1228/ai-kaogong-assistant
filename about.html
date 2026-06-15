@@ -1,70 +1,17 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于本站 - AI考公备考助手</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
+  <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>关于本站 - AI考公备考助手</title><link rel="stylesheet" href="style.css"></head>
   <body>
-    <header class="site-header">
-      <nav class="nav">
-        <a class="brand" href="index.html">
-          <span class="brand-mark">AI</span>
-          <span>AI考公备考助手</span>
-        </a>
-        <div class="nav-links">
-          <a href="index.html">首页</a>
-          <a href="planner.html">AI备考规划</a>
-          <a href="shenlun.html">申论素材库</a>
-          <a href="wrong.html">错题复盘</a>
-          <a href="resources.html">资料下载</a>
-          <a href="about.html">关于本站</a>
-        </div>
-      </nav>
-    </header>
-
+    <header class="site-header"><nav class="nav"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span>AI考公备考助手</span></a><div class="nav-links"><a href="index.html">首页</a><a href="planner.html">AI规划</a><a href="daily.html">每日任务</a><a href="xingce.html">行测专项</a><a href="shenlun.html">申论素材</a><a href="wrong.html">错题复盘</a><a href="job.html">岗位选择</a><a href="interview.html">面试备考</a><a href="guide.html">入门指南</a><a href="about.html">关于本站</a></div></nav></header>
     <main class="container">
-      <section class="page-title">
-        <h1>关于本站</h1>
-        <p>本站第一版采用静态前端加 Deno Deploy 后端代理架构，前端不保存也不暴露 AI API Key。</p>
-      </section>
-
-      <section class="materials-grid">
-        <article class="content-card">
-          <h2>适合谁使用</h2>
-          <ul>
-            <li>刚开始了解国考、省考、事业编的考公小白。</li>
-            <li>需要把复习时间拆成阶段任务的备考者。</li>
-            <li>希望建立错题复盘和申论素材积累习惯的学习者。</li>
-          </ul>
-        </article>
-
-        <article class="content-card">
-          <h2>考公入门指南</h2>
-          <ul>
-            <li>行测重在限时训练，建议按模块学习后进入套卷节奏。</li>
-            <li>申论重在审题、归纳、对策和文章结构，素材要服务观点。</li>
-            <li>备考信息以招录公告、职位表、考试大纲和官方通知为准。</li>
-          </ul>
-        </article>
-
-        <article class="content-card">
-          <h2>技术架构</h2>
-          <ul>
-            <li>前端：HTML、CSS、原生 JavaScript，可部署到 GitHub Pages。</li>
-            <li>后端：Deno Deploy 代理 AI 请求，统一处理 CORS 和 API Key。</li>
-            <li>AI：默认按 DeepSeek OpenAI-compatible API 编写，可通过环境变量切换。</li>
-          </ul>
-        </article>
-
-        <article class="content-card">
-          <h2>免责声明</h2>
-          <p class="notice">本站内容仅供学习参考，不代表官方考试信息，具体以各地公告为准。AI 生成内容可能存在不准确之处，请结合教材、真题和权威资料判断。</p>
-        </article>
+      <section class="page-title"><span class="eyebrow">项目说明</span><h1>关于本站</h1><p>本站采用 GitHub Pages 静态前端 + Deno Deploy 后端代理，前端不保存也不暴露 AI API Key。</p></section>
+      <section class="card-grid two">
+        <article class="content-card"><h2>适合谁使用</h2><ul><li>刚开始了解国考、省考、事业编的考公小白。</li><li>需要把复习时间拆成阶段任务的备考者。</li><li>希望建立错题复盘和申论素材积累习惯的学习者。</li></ul></article>
+        <article class="content-card"><h2>当前能力</h2><ul><li>AI 备考规划、AI 错题复盘。</li><li>每日任务、岗位选择等本地规则工具。</li><li>行测、申论、面试、入门指南内容页。</li></ul></article>
+        <article class="content-card"><h2>技术架构</h2><ul><li>前端：HTML、CSS、原生 JavaScript。</li><li>后端：Deno Deploy 代理 AI 请求。</li><li>模型：通过环境变量配置 SiliconFlow / DeepSeek 等 OpenAI-compatible API。</li></ul></article>
+        <article class="content-card"><h2>免责声明</h2><p class="notice">本站内容仅供学习参考，不代表官方考试信息，具体以各地公告为准。AI 生成内容可能存在不准确之处，请结合教材、真题和权威资料判断。</p></article>
       </section>
     </main>
-
     <script src="main.js"></script>
   </body>
 </html>

@@ -9,16 +9,17 @@
   <body>
     <header class="site-header">
       <nav class="nav">
-        <a class="brand" href="index.html">
-          <span class="brand-mark">AI</span>
-          <span>AI考公备考助手</span>
-        </a>
+        <a class="brand" href="index.html"><span class="brand-mark">AI</span><span>AI考公备考助手</span></a>
         <div class="nav-links">
           <a href="index.html">首页</a>
-          <a href="planner.html">AI备考规划</a>
-          <a href="shenlun.html">申论素材库</a>
+          <a href="planner.html">AI规划</a>
+          <a href="daily.html">每日任务</a>
+          <a href="xingce.html">行测专项</a>
+          <a href="shenlun.html">申论素材</a>
           <a href="wrong.html">错题复盘</a>
-          <a href="resources.html">资料下载</a>
+          <a href="job.html">岗位选择</a>
+          <a href="interview.html">面试备考</a>
+          <a href="guide.html">入门指南</a>
           <a href="about.html">关于本站</a>
         </div>
       </nav>
@@ -26,65 +27,75 @@
 
     <main class="container">
       <section class="hero">
-        <div>
-          <span class="eyebrow">新手友好的 AI 学习工作台</span>
+        <div class="hero-main">
+          <span class="eyebrow">考公备考工作台 · 第三版</span>
           <h1>AI考公备考助手</h1>
-          <p>一个适合考公小白的 AI 备考规划工具，帮你规划学习、复盘错题、整理申论素材。</p>
+          <p>把备考规划、每日任务、行测专项、申论素材、错题复盘、岗位选择和面试备考放在一个工作台里，适合零基础和在职备考持续使用。</p>
+          <div class="quick-actions">
+            <a class="btn" href="planner.html">生成备考规划</a>
+            <a class="btn secondary" href="daily.html">安排今日任务</a>
+            <a class="btn ghost" href="https://ningyan1228.github.io/study-resource-library/" target="_blank" rel="noopener">打开资料库</a>
+          </div>
         </div>
         <aside class="hero-panel">
-          <h2>建议使用顺序</h2>
+          <h2>今日使用顺序</h2>
           <ol class="guide-list">
-            <li>先用 AI 备考规划确定 30/60/90 天节奏。</li>
-            <li>每天练题后，把典型错题放进错题复盘。</li>
-            <li>申论素材和资料库用于日常积累与考前查漏。</li>
+            <li>先看 AI 规划或每日任务，确定今天做什么。</li>
+            <li>进入行测专项补薄弱模块，申论素材做积累。</li>
+            <li>练题后用错题复盘沉淀考点和避坑规则。</li>
           </ol>
         </aside>
       </section>
 
+      <section class="stats-grid">
+        <div class="stat-card"><strong>5</strong><span>大行测模块</span></div>
+        <div class="stat-card"><strong>8</strong><span>类申论素材</span></div>
+        <div class="stat-card"><strong>6</strong><span>类面试题型</span></div>
+        <div class="stat-card"><strong>30/60/90</strong><span>天计划节奏</span></div>
+      </section>
+
       <section class="section">
-        <h2>核心功能</h2>
-        <div class="card-grid five">
-          <article class="card">
-            <h3>AI备考规划</h3>
-            <p>根据考试类型、周期、基础和薄弱模块生成阶段计划。</p>
-            <a class="link" href="planner.html">开始规划</a>
-          </article>
-          <article class="card">
-            <h3>申论素材库</h3>
-            <p>整理金句、标题、分论点、开头结尾和热点主题。</p>
-            <a class="link" href="shenlun.html">查看素材</a>
-          </article>
-          <article class="card">
-            <h3>AI错题复盘</h3>
-            <p>输入错题和答案，生成考点、正确思路与避坑方法。</p>
-            <a class="link" href="wrong.html">复盘错题</a>
-          </article>
-          <article class="card">
-            <h3>考公入门指南</h3>
-            <p>了解行测、申论、备考节奏与信息获取方式。</p>
-            <a class="link" href="about.html">了解更多</a>
-          </article>
-          <article class="card">
-            <h3>资料下载</h3>
-            <p>跳转到你的考公资料库，集中查看资料和备考日历。</p>
-            <a class="link" href="resources.html">打开资料库</a>
-          </article>
+        <div class="section-head">
+          <div>
+            <h2>今日任务入口</h2>
+            <p>不调用 AI，本地按阶段、时长和薄弱模块生成今日安排。</p>
+          </div>
+          <a class="link" href="daily.html">生成今日任务</a>
+        </div>
+        <div class="card-grid three">
+          <article class="card"><h3>入门期</h3><p>先建立模块认知，少量刷题，重点理解方法。</p><a class="link" href="daily.html">安排入门任务</a></article>
+          <article class="card"><h3>强化期</h3><p>专项刷题、限时训练和错题归类同步推进。</p><a class="link" href="daily.html">安排强化任务</a></article>
+          <article class="card"><h3>冲刺期</h3><p>套题训练、查漏补缺和稳定节奏优先。</p><a class="link" href="daily.html">安排冲刺任务</a></article>
         </div>
       </section>
 
-      <section class="resource-banner">
-        <div>
-          <h2>已有资料库可以直接接入</h2>
-          <p>考公资料下载、学习资料整理和备考日历入口已经放到单独页面，方便从主站跳转。</p>
+      <section class="section">
+        <div class="section-head"><div><h2>AI 工具区</h2><p>需要生成个性化内容时再调用 AI，节省代金券。</p></div></div>
+        <div class="card-grid two">
+          <article class="card"><h3>AI备考规划</h3><p>根据考试、周期、基础、薄弱模块和在职情况生成计划。</p><a class="link" href="planner.html">开始规划</a></article>
+          <article class="card"><h3>AI错题复盘</h3><p>输入题目、你的答案和正确答案，生成错因、思路和标签。</p><a class="link" href="wrong.html">复盘错题</a></article>
         </div>
-        <a class="btn" href="resources.html">查看资料下载</a>
       </section>
 
-      <footer class="footer">
-        本站内容仅供学习参考，不代表官方考试信息，具体以各地公告为准。
-      </footer>
+      <section class="section">
+        <div class="section-head"><div><h2>备考内容区</h2><p>先补内容厚度，再逐步升级登录、错题本和数据库。</p></div></div>
+        <div class="card-grid">
+          <article class="card"><h3>行测专项</h3><p>言语、判断、资料、数量、常识五大模块学习方法。</p><a class="link" href="xingce.html">查看专项</a></article>
+          <article class="card"><h3>申论素材</h3><p>金句、标题、分论点、开头结尾和热点主题素材。</p><a class="link" href="shenlun.html">积累素材</a></article>
+          <article class="card"><h3>岗位选择</h3><p>按学历、专业、身份、地区和接受度生成报考建议。</p><a class="link" href="job.html">筛选方向</a></article>
+          <article class="card"><h3>面试备考</h3><p>结构化面试题型、答题框架和每日开口练习建议。</p><a class="link" href="interview.html">准备面试</a></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="card-grid two">
+          <article class="card"><h3>新手指南区</h3><p>国考、省考、事业编区别，零基础路线和常见误区。</p><a class="link" href="guide.html">进入指南</a></article>
+          <article class="card"><h3>资料下载区</h3><p>连接你已做好的考公资料库，用于资料整理和备考日历。</p><a class="link" href="https://ningyan1228.github.io/study-resource-library/" target="_blank" rel="noopener">打开资料库</a></article>
+        </div>
+      </section>
+
+      <footer class="footer">本站内容仅供学习参考，不代表官方考试信息，具体以各地公告为准。</footer>
     </main>
-
     <script src="main.js"></script>
   </body>
 </html>
