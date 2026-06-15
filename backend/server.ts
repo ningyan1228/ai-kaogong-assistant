@@ -20,6 +20,13 @@ type WrongRequest = {
   wrongReason?: string;
 };
 
+type LearningRequest = {
+  module?: string;
+  topic?: string;
+  action?: "explain" | "generate_questions" | "summarize_mistakes" | "template";
+  keyword?: string;
+};
+
 function jsonResponse(data: unknown, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -136,6 +143,46 @@ async function handleWrong(request: Request) {
   return jsonResponse({ result });
 }
 
+function getActionText(action?: string) {
+  if (action === "generate_questions") return "生成5道同类练习题，包含答案和简短解析";
+  if (action === "summarize_mistakes") return "总结易错点、常见误区和避坑方法";
+  if (action === "template") return "生成答题模板、使用场景和示例";
+  return "讲解这个知识点，说明是什么、高频考法、解题步骤和提分建议";
+}
+
+async function handleLearning(request: Request, area: "xingce" | "shenlun" | "knowledge" | "idiom") {
+  const body = await parseJson<LearningRequest>(request);
+  const topic = body.topic || body.keyword;
+
+  if (!topic) {
+    return jsonResponse({ error: "请提供 topic 或 keyword。" }, 400);
+  }
+
+  const areaName = {
+    xingce: "公务员考试行测",
+    shenlun: "公务员考试申论",
+    knowledge: "公务员考试常识判断",
+    idiom: "公务员考试言语理解成语辨析",
+  }[area];
+
+  const systemPrompt = [
+    `你是一名${areaName}老师。`,
+    "请围绕用户选择的模块和知识点输出内容。",
+    "内容要适合零基础考公学生，结构清晰，具体可执行，不要空泛。",
+    "输出使用 Markdown，不要编造官方考试政策。",
+  ].join("\n");
+
+  const userPrompt = [
+    `学习领域：${areaName}`,
+    `模块：${body.module || "未指定"}`,
+    `知识点：${topic}`,
+    `任务：${getActionText(body.action)}`,
+  ].join("\n");
+
+  const result = await callAi(systemPrompt, userPrompt);
+  return jsonResponse({ result });
+}
+
 Deno.serve(async (request) => {
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders });
@@ -150,6 +197,22 @@ Deno.serve(async (request) => {
 
     if (request.method === "POST" && url.pathname === "/api/wrong") {
       return await handleWrong(request);
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/xingce") {
+      return await handleLearning(request, "xingce");
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/shenlun") {
+      return await handleLearning(request, "shenlun");
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/knowledge") {
+      return await handleLearning(request, "knowledge");
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/idiom") {
+      return await handleLearning(request, "idiom");
     }
 
     return jsonResponse({ error: "接口不存在。" }, 404);

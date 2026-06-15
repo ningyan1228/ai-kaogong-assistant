@@ -3,96 +3,62 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>申论素材库 - AI考公备考助手</title>
+    <title>申论知识库 - AI考公备考助手</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header class="site-header">
       <nav class="nav">
-        <a class="brand" href="index.html">
-          <span class="brand-mark">AI</span>
-          <span>AI考公备考助手</span>
-        </a>
+        <a class="brand" href="index.html"><span class="brand-mark">AI</span><span>AI考公备考助手</span></a>
+        <button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false">☰</button>
         <div class="nav-links">
-          <a href="index.html">首页</a>
-          <a href="planner.html">AI备考规划</a>
-          <a href="shenlun.html">申论素材库</a>
-          <a href="wrong.html">错题复盘</a>
-          <a href="about.html">关于本站</a>
+          <a href="index.html">首页</a><a href="planner.html">AI规划</a><a href="daily.html">每日任务</a><a href="xingce.html">行测</a><a href="shenlun.html">申论</a><a href="knowledge.html">常识</a><a href="idiom.html">成语</a><a href="wrong.html">错题复盘</a><a href="job.html">岗位选择</a><a href="interview.html">面试备考</a><a href="guide.html">入门指南</a>
         </div>
       </nav>
     </header>
 
-    <main class="container">
-      <section class="page-title">
-        <h1>申论素材库</h1>
-        <p>按题型和热点分类积累素材，适合日常晨读、作文提纲和考前复盘。</p>
-      </section>
+    <main class="doc-shell">
+      <aside class="doc-sidebar">
+        <h2>申论目录</h2>
+        <a href="#intro">什么是申论</a>
+        <a href="#reading">材料阅读技巧</a>
+        <a href="#summary">归纳概括</a>
+        <a href="#solution">提出对策</a>
+        <a href="#analysis">综合分析</a>
+        <a href="#document">公文写作</a>
+        <a href="#essay">大作文写作</a>
+        <a href="#sample">申论范文</a>
+        <a href="#themes">高频主题素材</a>
+      </aside>
 
-      <section class="materials-grid">
-        <article class="content-card">
-          <h2>人民日报金句</h2>
-          <ul>
-            <li>民生无小事，枝叶总关情。</li>
-            <li>一分部署，九分落实。</li>
-            <li>大道至简，实干为要。</li>
-            <li>时代是出卷人，我们是答卷人，人民是阅卷人。</li>
-          </ul>
-        </article>
+      <article class="doc-content">
+        <section class="doc-hero">
+          <span class="eyebrow">申论知识库</span>
+          <h1>从材料阅读到大作文的答题工作流</h1>
+          <p>申论不是背模板，而是审题、找点、加工、表达。每个题型都配 AI 讲解、模板和练习题。</p>
+        </section>
+        <div id="docAiResult" class="result-card doc-ai-result empty-state" data-raw-result>选择题型下方的 AI 按钮，结果会显示在这里。</div>
 
-        <article class="content-card">
-          <h2>申论万能标题</h2>
-          <ul>
-            <li>以实干之笔书写高质量发展答卷</li>
-            <li>让民生温度标注治理高度</li>
-            <li>在守正创新中激发发展活力</li>
-            <li>用精细治理托起群众幸福生活</li>
-          </ul>
-        </article>
+        <section id="intro" class="doc-section" data-module="申论" data-topic="什么是申论"><h3>什么是申论</h3><dl class="knowledge-list"><dt>题型说明</dt><dd>申论考查阅读理解、综合分析、提出和解决问题、文字表达等能力。</dd><dt>答题步骤</dt><dd>审题明确任务，回材料找要点，按逻辑加工，最后规范表达。</dd><dt>常见失分点</dt><dd>脱离材料、要点不全、条理混乱、语言空泛。</dd><dt>模板句</dt><dd>申论作答要坚持材料为王、问题导向、条理表达。</dd><dt>AI生成示例</dt><dd>可让 AI 用一道小题演示完整作答过程。</dd></dl><div class="ai-action-row shenlun-actions"></div></section>
+        <section id="reading" class="doc-section" data-module="申论" data-topic="材料阅读技巧"><h3>材料阅读技巧</h3><dl class="knowledge-list"><dt>题型说明</dt><dd>材料阅读决定找点速度和准确率，是申论所有题型的基础。</dd><dt>答题步骤</dt><dd>先看题干任务，再带着关键词读材料，圈主体、问题、原因、影响、对策。</dd><dt>常见失分点</dt><dd>先读全文再看题，导致信息抓取没有方向。</dd><dt>模板句</dt><dd>材料中的问题、原因、对策往往对应答案的基本骨架。</dd><dt>AI生成示例</dt><dd>让 AI 生成一段材料并示范如何圈点。</dd></dl><div class="ai-action-row shenlun-actions"></div></section>
+        <section id="summary" class="doc-section" data-module="申论" data-topic="归纳概括"><h3>归纳概括</h3><dl class="knowledge-list"><dt>题型说明</dt><dd>要求概括问题、原因、表现、经验等，答案应简洁全面。</dd><dt>答题步骤</dt><dd>找同类信息，合并同义表达，用短句分条呈现。</dd><dt>常见失分点</dt><dd>抄材料过长、分类不清、漏掉隐含要点。</dd><dt>模板句</dt><dd>一是……；二是……；三是……。</dd><dt>AI生成示例</dt><dd>让 AI 生成一题归纳概括并给参考答案。</dd></dl><div class="ai-action-row shenlun-actions"></div></section>
+        <section id="solution" class="doc-section" data-module="申论" data-topic="提出对策"><h3>提出对策</h3><dl class="knowledge-list"><dt>题型说明</dt><dd>围绕材料问题提出可执行的解决办法。</dd><dt>答题步骤</dt><dd>问题反推对策，原因对应措施，已有经验可转化为建议。</dd><dt>常见失分点</dt><dd>对策空泛，如“加强重视”“完善机制”但没有具体动作。</dd><dt>模板句</dt><dd>针对……问题，应从……入手，通过……实现……。</dd><dt>AI生成示例</dt><dd>让 AI 把空泛对策改成具体表达。</dd></dl><div class="ai-action-row shenlun-actions"></div></section>
+        <section id="analysis" class="doc-section" data-module="申论" data-topic="综合分析"><h3>综合分析</h3><dl class="knowledge-list"><dt>题型说明</dt><dd>解释一句话、评价一个现象或分析一个观点。</dd><dt>答题步骤</dt><dd>先表态或解释，再结合材料分析原因影响，最后提出启示或对策。</dd><dt>常见失分点</dt><dd>只解释不分析，或者观点不明确。</dd><dt>模板句</dt><dd>这句话表明……，其背后反映了……，因此需要……。</dd><dt>AI生成示例</dt><dd>让 AI 生成综合分析题并拆解答题层次。</dd></dl><div class="ai-action-row shenlun-actions"></div></section>
+        <section id="document" class="doc-section" data-module="申论" data-topic="公文写作"><h3>公文写作</h3><dl class="knowledge-list"><dt>题型说明</dt><dd>常见为倡议书、通知、发言稿、简报、宣传稿等。</dd><dt>答题步骤</dt><dd>判断文种和对象，确定格式，再按背景、问题、措施组织内容。</dd><dt>常见失分点</dt><dd>格式错、语气不合对象、内容过度模板化。</dd><dt>模板句</dt><dd>为进一步……，现倡议如下：一、……二、……三、……。</dd><dt>AI生成示例</dt><dd>让 AI 按指定文种生成可套用结构。</dd></dl><div class="ai-action-row shenlun-actions"></div></section>
+        <section id="essay" class="doc-section" data-module="申论" data-topic="大作文写作"><h3>大作文写作</h3><dl class="knowledge-list"><dt>题型说明</dt><dd>围绕给定主题写议论文，考查立意、结构和表达。</dd><dt>答题步骤</dt><dd>审主题，定总论点，拆分论点，填材料和案例，收束升华。</dd><dt>常见失分点</dt><dd>偏题、分论点重复、只有口号没有论证。</dd><dt>模板句</dt><dd>以……为笔，以……为墨，方能书写……新答卷。</dd><dt>AI生成示例</dt><dd>让 AI 为一个主题生成标题、分论点和开头结尾。</dd></dl><div class="ai-action-row shenlun-actions"></div></section>
+        <section id="sample" class="doc-section" data-module="申论" data-topic="申论范文"><h3>申论范文</h3><dl class="knowledge-list"><dt>题型说明</dt><dd>范文用于学习结构、语言和论证，不是整篇背诵。</dd><dt>答题步骤</dt><dd>拆标题、开头、分论点、论证素材和结尾。</dd><dt>常见失分点</dt><dd>照搬范文导致不贴材料。</dd><dt>模板句</dt><dd>好范文要拆成可迁移的表达和结构。</dd><dt>AI生成示例</dt><dd>让 AI 按主题生成范文提纲。</dd></dl><div class="ai-action-row shenlun-actions"></div></section>
+        <section id="themes" class="doc-section" data-module="申论" data-topic="高频主题素材"><h3>高频主题素材</h3><dl class="knowledge-list"><dt>题型说明</dt><dd>基层治理、乡村振兴、数字政府、民生保障、文化自信、生态文明、青年奋斗都是高频方向。</dd><dt>答题步骤</dt><dd>每个主题准备问题、意义、对策、金句四类素材。</dd><dt>常见失分点</dt><dd>素材只会背，不会按题目转化。</dd><dt>模板句</dt><dd>小切口连着大民生，细微处体现治理温度。</dd><dt>AI生成示例</dt><dd>让 AI 为某个热点生成素材卡片。</dd></dl><div class="ai-action-row shenlun-actions"></div><a class="btn secondary" href="https://ningyan1228.github.io/study-resource-library/" target="_blank" rel="noopener">打开资料库</a></section>
+      </article>
 
-        <article class="content-card">
-          <h2>分论点模板</h2>
-          <ul>
-            <li>坚持问题导向，找准治理发力点。</li>
-            <li>强化制度保障，筑牢长效发展根基。</li>
-            <li>凝聚多方合力，形成共建共治共享格局。</li>
-            <li>注重科技赋能，提升公共服务效能。</li>
-          </ul>
-        </article>
-
-        <article class="content-card">
-          <h2>开头模板</h2>
-          <ul>
-            <li>从现实情况看，某项工作关系群众切身利益，也检验治理能力现代化水平。</li>
-            <li>当前，发展环境深刻变化，只有坚持系统观念，才能破解难题、打开新局。</li>
-            <li>小切口连着大民生，细微处体现治理温度。</li>
-          </ul>
-        </article>
-
-        <article class="content-card">
-          <h2>结尾模板</h2>
-          <ul>
-            <li>久久为功、善作善成，方能把蓝图变成现实。</li>
-            <li>以人民为中心，把每一项工作做到群众心坎上。</li>
-            <li>在新征程上，以更实举措回应期待，以更高标准推动发展。</li>
-          </ul>
-        </article>
-
-        <article class="content-card">
-          <h2>热点主题素材</h2>
-          <div class="tag-row">
-            <span class="tag">基层治理</span>
-            <span class="tag">乡村振兴</span>
-            <span class="tag">数字政府</span>
-            <span class="tag">民生保障</span>
-            <span class="tag">文化自信</span>
-            <span class="tag">生态文明</span>
-            <span class="tag">青年奋斗</span>
-          </div>
-        </article>
-      </section>
+      <aside class="doc-toc">
+        <h2>本页工具</h2>
+        <a href="#docAiResult">AI结果区</a>
+        <a href="#summary">归纳概括</a>
+        <a href="#solution">提出对策</a>
+        <a href="#essay">大作文</a>
+        <a href="#themes">主题素材</a>
+      </aside>
     </main>
-
     <script src="main.js"></script>
   </body>
 </html>

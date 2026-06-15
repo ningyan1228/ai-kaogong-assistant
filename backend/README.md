@@ -6,14 +6,18 @@
 
 - `POST /api/plan`：生成 AI 备考规划
 - `POST /api/wrong`：生成 AI 错题复盘
+- `POST /api/xingce`：生成行测知识点讲解、同类题或易错点总结
+- `POST /api/shenlun`：生成申论题型讲解、模板或练习题
+- `POST /api/knowledge`：生成常识考点题
+- `POST /api/idiom`：解释成语或补充成语辨析
 
 ## 环境变量
 
 在 Deno Deploy 项目设置里配置：
 
-- `AI_API_KEY`：你的 DeepSeek API Key
-- `AI_BASE_URL`：AI 接口地址，默认可用 `https://api.deepseek.com`
-- `AI_MODEL`：模型名，默认可用 `deepseek-chat`
+- `AI_API_KEY`：你的 SiliconFlow 或 DeepSeek API Key
+- `AI_BASE_URL`：AI 接口地址，例如 `https://api.siliconflow.cn/v1`
+- `AI_MODEL`：模型名，例如 `deepseek-ai/DeepSeek-V3.2`
 
 ## 本地运行
 

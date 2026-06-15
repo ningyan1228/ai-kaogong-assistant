@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成语查询 - AI考公备考助手</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="index.html"><span class="brand-mark">AI</span><span>AI考公备考助手</span></a>
+        <button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false">☰</button>
+        <div class="nav-links">
+          <a href="index.html">首页</a><a href="planner.html">AI规划</a><a href="daily.html">每日任务</a><a href="xingce.html">行测</a><a href="shenlun.html">申论</a><a href="knowledge.html">常识</a><a href="idiom.html">成语</a><a href="wrong.html">错题复盘</a><a href="job.html">岗位选择</a><a href="interview.html">面试备考</a><a href="guide.html">入门指南</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="page-title">
+        <span class="eyebrow">言语理解工具</span>
+        <h1>成语查询</h1>
+        <p>优先查询本地成语库。查不到时可调用 AI，帮你解释含义、常见误用和考试语境。</p>
+      </section>
+
+      <section class="idiom-panel">
+        <form id="idiomForm" class="idiom-search">
+          <label for="idiomKeyword">输入成语或关键词</label>
+          <div class="search-line">
+            <input id="idiomKeyword" name="keyword" placeholder="例如：首当其冲、不以为然、差强人意">
+            <button class="btn" type="submit">查询</button>
+          </div>
+          <p>本地库来自你桌面上的《国考成语419组.xlsx》字段整理，先内置 50+ 高频成语。</p>
+        </form>
+        <div id="idiomResult" class="idiom-results"></div>
+        <div id="idiomAiResult" class="result-card empty-state" data-raw-result>本地查不到时，AI 解释会显示在这里。</div>
+      </section>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>

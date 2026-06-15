@@ -7,64 +7,23 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header class="site-header">
-      <nav class="nav">
-        <a class="brand" href="index.html">
-          <span class="brand-mark">AI</span>
-          <span>AI考公备考助手</span>
-        </a>
-        <div class="nav-links">
-          <a href="index.html">首页</a>
-          <a href="planner.html">AI备考规划</a>
-          <a href="shenlun.html">申论素材库</a>
-          <a href="wrong.html">错题复盘</a>
-          <a href="about.html">关于本站</a>
-        </div>
-      </nav>
-    </header>
-
+    <header class="site-header"><nav class="nav"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span>AI考公备考助手</span></a><button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">首页</a><a href="planner.html">AI规划</a><a href="daily.html">每日任务</a><a href="xingce.html">行测</a><a href="shenlun.html">申论</a><a href="knowledge.html">常识</a><a href="idiom.html">成语</a><a href="wrong.html">错题复盘</a><a href="job.html">岗位选择</a><a href="interview.html">面试备考</a><a href="guide.html">入门指南</a></div></nav></header>
     <main class="container">
-      <section class="page-title">
-        <h1>AI错题复盘</h1>
-        <p>把错题、你的答案和正确答案交给 AI，快速定位考点、错因和下次判断方法。</p>
-      </section>
-
+      <section class="page-title"><span class="eyebrow">AI 工具</span><h1>AI错题复盘</h1><p>把错题、你的答案和正确答案交给 AI，定位考点、错因和下次判断方法。</p></section>
       <section class="layout">
         <form id="wrongForm" class="form-card">
           <h2>错题信息</h2>
           <div class="form-grid">
-            <div class="field">
-              <label for="question">题目内容</label>
-              <textarea id="question" name="question" placeholder="粘贴题干、选项或材料"></textarea>
-            </div>
-            <div class="field">
-              <label for="myAnswer">我的答案</label>
-              <textarea id="myAnswer" name="myAnswer" placeholder="写下你的选择、解题过程或作答内容"></textarea>
-            </div>
-            <div class="field">
-              <label for="correctAnswer">正确答案</label>
-              <textarea id="correctAnswer" name="correctAnswer" placeholder="填写正确答案或参考解析"></textarea>
-            </div>
-            <div class="field">
-              <label for="wrongReason">我觉得错的原因</label>
-              <textarea id="wrongReason" name="wrongReason" placeholder="例如：审题太快、公式忘了、概念混淆"></textarea>
-            </div>
-            <div class="actions">
-              <button class="btn" type="submit">生成错题复盘</button>
-              <button class="btn secondary" type="reset">清空</button>
-            </div>
+            <div class="field"><label for="question">题目内容</label><textarea id="question" name="question" placeholder="粘贴题干、选项或材料"></textarea></div>
+            <div class="field"><label for="myAnswer">我的答案</label><textarea id="myAnswer" name="myAnswer" placeholder="写下你的选择、解题过程或作答内容"></textarea></div>
+            <div class="field"><label for="correctAnswer">正确答案</label><textarea id="correctAnswer" name="correctAnswer" placeholder="填写正确答案或参考解析"></textarea></div>
+            <div class="field"><label for="wrongReason">我觉得错的原因</label><textarea id="wrongReason" name="wrongReason" placeholder="例如：审题太快、公式忘了、概念混淆"></textarea></div>
+            <div class="actions"><button class="btn" type="submit">生成错题复盘</button><button class="btn secondary" type="reset">清空</button></div>
           </div>
         </form>
-
-        <aside class="result-card">
-          <h2>AI复盘结果</h2>
-          <div id="wrongResult" class="empty-state">
-            生成后会在这里展示题目考点、错误原因、正确思路、同类题避坑方法、下次判断方法和错题标签。
-          </div>
-        </aside>
+        <aside class="result-card"><h2>AI复盘结果</h2><div id="wrongResult" class="empty-state">生成后会在这里展示题目考点、错误原因、正确思路、同类题避坑方法、下次判断方法和错题标签。</div></aside>
       </section>
     </main>
-
     <script src="main.js"></script>
   </body>
 </html>
