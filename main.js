@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ai-kaogong-assistant-j89bmre36td6.gqzning.deno.net";
+const API_BASE_URL = "https://ai-kaogong-assistant.gqzning.deno.net";
 const LOCAL_API_BASE_URL = "http://localhost:8000";
 
 function getApiBaseUrl() {
