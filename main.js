@@ -360,9 +360,209 @@ function initJobForm() {
   });
 }
 
+function getNumberValue(form, name, fallback = 0) {
+  const value = Number(new FormData(form).get(name));
+  if (Number.isNaN(value)) return fallback;
+  return Math.max(0, Math.min(100, value));
+}
+
+function classifyAbility(score) {
+  if (score >= 75) return { label: "已掌握", className: "stable", advice: "保持手感，套题中稳定拿分。" };
+  if (score >= 50) return { label: "正在强化", className: "warning", advice: "继续专项训练，重点压缩做题时间。" };
+  return { label: "危险区域", className: "danger", advice: "优先补基础方法，再进入限时刷题。" };
+}
+
+function buildAbilityRows(scores) {
+  return scores.map((item) => {
+    const status = classifyAbility(item.score);
+    return `
+      <div class="ability-row">
+        <div class="ability-meta"><strong>${item.name}</strong><span>${item.score}</span></div>
+        <div class="ability-track"><span class="${status.className}" style="width:${item.score}%"></span></div>
+        <small>${status.label}：${status.advice}</small>
+      </div>
+    `;
+  }).join("");
+}
+
+function buildSevenDayPlan(priority) {
+  const first = priority[0]?.name || "资料分析";
+  const second = priority[1]?.name || "数量关系";
+  return [
+    `Day1：${first} 基础方法复盘 + 20 题`,
+    `Day2：${first} 限时训练 + 错题归类`,
+    `Day3：${second} 基础模型梳理 + 10 题`,
+    `Day4：${second} 易错题型专项 + 复盘`,
+    `Day5：${first} 和 ${second} 混合训练`,
+    "Day6：半套行测限时训练，记录时间分配",
+    "Day7：回看错题，整理下周危险模块",
+  ];
+}
+
+function updateXingceMap(scores) {
+  const mapEl = document.querySelector("#xingceMap");
+  if (!mapEl) return;
+
+  const practiceMap = {
+    言语理解: "20题 / 15分钟",
+    判断推理: "25题 / 20分钟",
+    资料分析: "2篇 / 20分钟",
+    数量关系: "10题 / 15分钟",
+    常识判断: "10分钟积累",
+  };
+
+  mapEl.innerHTML = scores.map((item) => {
+    const status = classifyAbility(item.score);
+    return `
+      <div class="map-card ${status.className}">
+        <strong>${item.name}</strong>
+        <span>${status.label}</span>
+        <small>${practiceMap[item.name]}</small>
+      </div>
+    `;
+  }).join("");
+}
+
+function initXingceAbility() {
+  const form = document.querySelector("#xingceAbilityForm");
+  const resultEl = document.querySelector("#xingceAbilityResult");
+  const refreshBtn = document.querySelector("#refreshXingceMap");
+  if (!form || !resultEl) return;
+
+  function readScores() {
+    const formData = new FormData(form);
+    return ["言语理解", "判断推理", "资料分析", "数量关系", "常识判断"].map((name) => ({
+      name,
+      score: Math.max(0, Math.min(100, Number(formData.get(name)) || 0)),
+    }));
+  }
+
+  function analyze() {
+    const scores = readScores();
+    const priority = [...scores].sort((a, b) => a.score - b.score);
+    const average = Math.round(scores.reduce((sum, item) => sum + item.score, 0) / scores.length);
+    const first = priority[0];
+    const second = priority[1];
+    const hours = (item) => Math.max(8, Math.round((80 - item.score) * 0.6));
+    const expected = average >= 70 ? "+4~6分" : average >= 50 ? "+6~10分" : "+8~12分";
+    const plan = buildSevenDayPlan(priority).map((item) => `<li>${item}</li>`).join("");
+
+    resultEl.dataset.rawResult = [
+      `当前平均能力：${average}`,
+      `优先提升：${first.name}、${second.name}`,
+      `${first.name}预计投入：${hours(first)}小时`,
+      `${second.name}预计投入：${hours(second)}小时`,
+      `预计提升：${expected}`,
+    ].join("\n");
+
+    resultEl.classList.remove("empty-state");
+    resultEl.innerHTML = `
+      <div class="result-toolbar">
+        <span class="copy-status">能力分析已生成</span>
+        <button class="copy-btn" type="button" data-copy-result>复制结果</button>
+      </div>
+      <div class="ability-summary">
+        <strong>当前平均能力：${average}</strong>
+        <span>距离稳定高分，优先补齐 ${first.name} 和 ${second.name}。</span>
+      </div>
+      <div class="ability-chart">${buildAbilityRows(scores)}</div>
+      <div class="advice-box">
+        <h3>AI建议</h3>
+        <p>距离 80 分优先提升：${first.name}、${second.name}。</p>
+        <p>${first.name}预计投入 ${hours(first)} 小时，${second.name}预计投入 ${hours(second)} 小时。</p>
+        <p>预计提升：${expected}。</p>
+      </div>
+      <div class="advice-box">
+        <h3>未来7天</h3>
+        <ol>${plan}</ol>
+      </div>
+    `;
+    updateXingceMap(scores);
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    analyze();
+  });
+
+  refreshBtn?.addEventListener("click", analyze);
+  analyze();
+}
+
+function initScoreEstimator() {
+  const form = document.querySelector("#scoreEstimatorForm");
+  const resultEl = document.querySelector("#scoreEstimatorResult");
+  if (!form || !resultEl) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const items = ["言语", "判断", "资料", "数量", "常识"].map((name) => ({
+      name,
+      score: Math.max(0, Number(formData.get(name)) || 0),
+    }));
+    const total = items.reduce((sum, item) => sum + item.score, 0);
+    const lowest = [...items].sort((a, b) => a.score - b.score)[0];
+    const second = [...items].sort((a, b) => a.score - b.score)[1];
+    const level = total >= 115 ? "很有竞争力" : total >= 100 ? "有竞争力，但仍需补短板" : "基础还不稳，优先补高性价比模块";
+    const boostedA = total + (lowest.name === "数量" ? 8 : 6);
+    const boostedB = total + (second.name === "数量" ? 8 : 6);
+    const result = [
+      `# 当前总分：${total}`,
+      `## 预计竞争力`,
+      level,
+      `## 优先提升`,
+      `${lowest.name}、${second.name}`,
+      `## 提升模拟`,
+      `如果提升${lowest.name}：总分约 ${boostedA}`,
+      `如果提升${second.name}：总分约 ${boostedB}`,
+    ].join("\n\n");
+    renderResult(resultEl, result);
+  });
+}
+
+function initWeakDiagnosis() {
+  const form = document.querySelector("#weakDiagnosisForm");
+  const resultEl = document.querySelector("#weakDiagnosisResult");
+  if (!form || !resultEl) return;
+
+  const reasonMap = {
+    增长率: "公式入口不熟，看到同比、环比、增长量时切换慢。",
+    比重: "现期比重和基期比重混淆，容易漏看时间。",
+    平均数: "总量和份数对应关系不清，容易套错分母。",
+    倍数: "倍数、增长率和多几倍概念混在一起。",
+    混合增长率: "没有先判断整体增长率在两个部分之间。",
+    审题速度: "题干关键词抓取慢，导致时间被单题吞掉。",
+  };
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const module = formData.get("module");
+    const topic = formData.get("topic");
+    const result = [
+      `# ${module}诊断：${topic}`,
+      `## 你最容易死在哪`,
+      reasonMap[topic] || "基础概念和题型入口不稳定。",
+      `## 80%的同学死在这里的原因`,
+      "不是题目完全不会，而是公式、关键词、时间条件和选项估算没有形成固定动作。",
+      `## 三天修复安排`,
+      `第一天：重学${topic}基础公式和题型入口，做 10 道慢速题。`,
+      `第二天：刷 20 道同类题，限时但不追求速度极限。`,
+      `第三天：整理错题，把每道题改写成“下次看到什么就怎么做”。`,
+      `## 下次避坑`,
+      "先圈时间、对象、单位，再选公式；不会就先跳，回头再做。",
+    ].join("\n\n");
+    renderResult(resultEl, result);
+  });
+}
+
 setActiveNav();
 initCopyButtons();
 initPlannerForm();
 initWrongForm();
 initDailyForm();
 initJobForm();
+initXingceAbility();
+initScoreEstimator();
+initWeakDiagnosis();

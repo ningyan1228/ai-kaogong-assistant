@@ -1,16 +1,141 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>行测专项 - AI考公备考助手</title><link rel="stylesheet" href="style.css"></head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行测专项 - AI考公备考助手</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
   <body>
-    <header class="site-header"><nav class="nav"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span>AI考公备考助手</span></a><div class="nav-links"><a href="index.html">首页</a><a href="planner.html">AI规划</a><a href="daily.html">每日任务</a><a href="xingce.html">行测专项</a><a href="shenlun.html">申论素材</a><a href="wrong.html">错题复盘</a><a href="job.html">岗位选择</a><a href="interview.html">面试备考</a><a href="guide.html">入门指南</a><a href="about.html">关于本站</a></div></nav></header>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="index.html"><span class="brand-mark">AI</span><span>AI考公备考助手</span></a>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="planner.html">AI规划</a>
+          <a href="daily.html">每日任务</a>
+          <a href="xingce.html">行测专项</a>
+          <a href="shenlun.html">申论素材</a>
+          <a href="wrong.html">错题复盘</a>
+          <a href="job.html">岗位选择</a>
+          <a href="interview.html">面试备考</a>
+          <a href="guide.html">入门指南</a>
+          <a href="about.html">关于本站</a>
+        </div>
+      </nav>
+    </header>
+
     <main class="container">
-      <section class="page-title"><span class="eyebrow">五大模块</span><h1>行测专项</h1><p>按模块理解“考什么、怎么学、怎么提分”，适合日常查漏补缺。</p></section>
-      <section class="module-list">
-        <article class="module-card"><h2>言语理解</h2><div class="module-columns"><div><strong>考什么</strong>片段阅读、逻辑填空、语句排序。</div><div><strong>常见题型</strong>主旨概括、意图判断、细节理解、成语辨析。</div><div><strong>学习方法</strong>先练找主题句，再练转折、因果、并列结构。</div><div><strong>提分建议</strong>少凭语感，多用文段结构和选项差异排除。</div><div><strong>每日节奏</strong>20-30 题，错题写明错在文段还是选项。</div></div></article>
-        <article class="module-card"><h2>判断推理</h2><div class="module-columns"><div><strong>考什么</strong>图形推理、定义判断、类比推理、逻辑判断。</div><div><strong>常见题型</strong>位置、数量、属性、加强削弱、真假推理。</div><div><strong>学习方法</strong>建立题型清单，每类题固定识别入口。</div><div><strong>提分建议</strong>图推先看规律维度，逻辑题先找论点论据。</div><div><strong>每日节奏</strong>30-40 题，集中复盘高频题型。</div></div></article>
-        <article class="module-card"><h2>资料分析</h2><div class="module-columns"><div><strong>考什么</strong>增长率、比重、平均数、倍数、综合分析。</div><div><strong>常见题型</strong>现期、基期、增长量、两期比重。</div><div><strong>学习方法</strong>公式先熟，再练速算和选项敏感度。</div><div><strong>提分建议</strong>资料分析是性价比模块，优先稳准确率。</div><div><strong>每日节奏</strong>2-3 篇资料，限时 18-24 分钟。</div></div></article>
-        <article class="module-card"><h2>数量关系</h2><div class="module-columns"><div><strong>考什么</strong>工程、行程、排列组合、概率、几何。</div><div><strong>常见题型</strong>方程、特值、代入排除、最值问题。</div><div><strong>学习方法</strong>先掌握基础模型，难题学会取舍。</div><div><strong>提分建议</strong>不要被数量拖垮节奏，先拿基础题。</div><div><strong>每日节奏</strong>10-15 题，重点总结解题入口。</div></div></article>
-        <article class="module-card"><h2>常识判断</h2><div class="module-columns"><div><strong>考什么</strong>政治、法律、经济、科技、人文、地理。</div><div><strong>常见题型</strong>时政热点、法律常识、科技生活。</div><div><strong>学习方法</strong>碎片化积累，结合真题看高频方向。</div><div><strong>提分建议</strong>不建议大量死背，优先抓时政和基础法律。</div><div><strong>每日节奏</strong>10 分钟积累，套题中保持手感。</div></div></article>
+      <section class="page-title">
+        <span class="eyebrow">行测控制台</span>
+        <h1>行测专项</h1>
+        <p>先测出能力短板，再给出训练优先级、7 天提分方案和模块地图。这里全部本地生成，不消耗 API。</p>
+      </section>
+
+      <section class="dashboard-grid">
+        <form id="xingceAbilityForm" class="form-card">
+          <h2>你的行测能力</h2>
+          <div class="form-grid compact">
+            <div class="field"><label for="verbalScore">言语理解</label><input id="verbalScore" name="言语理解" type="number" min="0" max="100" value="70"></div>
+            <div class="field"><label for="logicScore">判断推理</label><input id="logicScore" name="判断推理" type="number" min="0" max="100" value="50"></div>
+            <div class="field"><label for="dataScore">资料分析</label><input id="dataScore" name="资料分析" type="number" min="0" max="100" value="30"></div>
+            <div class="field"><label for="mathScore">数量关系</label><input id="mathScore" name="数量关系" type="number" min="0" max="100" value="20"></div>
+            <div class="field"><label for="commonScore">常识判断</label><input id="commonScore" name="常识判断" type="number" min="0" max="100" value="60"></div>
+            <div class="actions"><button class="btn" type="submit">生成能力分析</button></div>
+          </div>
+        </form>
+
+        <aside class="result-card">
+          <h2>能力图与 AI建议</h2>
+          <div id="xingceAbilityResult" class="empty-state">输入 0-100 的模块掌握度，生成能力条形图、危险模块、预计投入和提分建议。</div>
+        </aside>
+      </section>
+
+      <section class="section dashboard-grid">
+        <form id="scoreEstimatorForm" class="form-card">
+          <h2>AI估分器</h2>
+          <div class="form-grid compact">
+            <div class="field"><label for="verbalRaw">言语得分</label><input id="verbalRaw" name="言语" type="number" min="0" value="32"></div>
+            <div class="field"><label for="logicRaw">判断得分</label><input id="logicRaw" name="判断" type="number" min="0" value="28"></div>
+            <div class="field"><label for="dataRaw">资料得分</label><input id="dataRaw" name="资料" type="number" min="0" value="20"></div>
+            <div class="field"><label for="mathRaw">数量得分</label><input id="mathRaw" name="数量" type="number" min="0" value="8"></div>
+            <div class="field"><label for="commonRaw">常识得分</label><input id="commonRaw" name="常识" type="number" min="0" value="12"></div>
+            <div class="actions"><button class="btn" type="submit">估算总分</button></div>
+          </div>
+        </form>
+
+        <aside class="result-card">
+          <h2>估分结果</h2>
+          <div id="scoreEstimatorResult" class="empty-state">输入五个模块得分，生成当前总分、竞争力判断和优先提升模块。</div>
+        </aside>
+      </section>
+
+      <section class="section dashboard-grid">
+        <form id="weakDiagnosisForm" class="form-card">
+          <h2>薄弱模块诊断</h2>
+          <div class="form-grid">
+            <div class="field">
+              <label for="diagnosisModule">选择模块</label>
+              <select id="diagnosisModule" name="module">
+                <option value="资料分析">资料分析</option>
+                <option value="数量关系">数量关系</option>
+                <option value="言语理解">言语理解</option>
+                <option value="判断推理">判断推理</option>
+                <option value="常识判断">常识判断</option>
+              </select>
+            </div>
+            <div class="field">
+              <div class="fieldset-title">你最容易错在哪</div>
+              <div class="checkbox-grid">
+                <label class="check-item"><input type="radio" name="topic" value="增长率" checked>增长率</label>
+                <label class="check-item"><input type="radio" name="topic" value="比重">比重</label>
+                <label class="check-item"><input type="radio" name="topic" value="平均数">平均数</label>
+                <label class="check-item"><input type="radio" name="topic" value="倍数">倍数</label>
+                <label class="check-item"><input type="radio" name="topic" value="混合增长率">混合增长率</label>
+                <label class="check-item"><input type="radio" name="topic" value="审题速度">审题速度</label>
+              </div>
+            </div>
+            <div class="actions"><button class="btn" type="submit">生成诊断</button></div>
+          </div>
+        </form>
+
+        <aside class="result-card">
+          <h2>诊断结果</h2>
+          <div id="weakDiagnosisResult" class="empty-state">选择模块和薄弱考点后，生成错因、三天训练安排和避坑提示。</div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>行测地图</h2>
+            <p>根据你的能力分自动标记危险区域、正在强化和已掌握模块。</p>
+          </div>
+          <button class="btn secondary" type="button" id="refreshXingceMap">刷新地图</button>
+        </div>
+        <div id="xingceMap" class="map-grid">
+          <div class="map-card warning"><strong>言语理解</strong><span>正在强化</span><small>20题 / 15分钟</small></div>
+          <div class="map-card warning"><strong>判断推理</strong><span>正在强化</span><small>25题 / 20分钟</small></div>
+          <div class="map-card danger"><strong>资料分析</strong><span>危险区域</span><small>2篇 / 20分钟</small></div>
+          <div class="map-card danger"><strong>数量关系</strong><span>危险区域</span><small>10题 / 15分钟</small></div>
+          <div class="map-card stable"><strong>常识判断</strong><span>已掌握</span><small>10分钟积累</small></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>五大模块学习卡</h2>
+            <p>诊断之后再看学习方法，避免只停留在“看完了”。</p>
+          </div>
+        </div>
+        <div class="module-list">
+          <article class="module-card"><h2>言语理解</h2><div class="module-columns"><div><strong>考什么</strong>片段阅读、逻辑填空、语句排序。</div><div><strong>常见题型</strong>主旨概括、意图判断、细节理解、成语辨析。</div><div><strong>学习方法</strong>先练找主题句，再练转折、因果、并列结构。</div><div><strong>提分建议</strong>少凭语感，多用文段结构和选项差异排除。</div><div><strong>每日节奏</strong>20-30 题，错题写明错在文段还是选项。</div></div></article>
+          <article class="module-card"><h2>判断推理</h2><div class="module-columns"><div><strong>考什么</strong>图形推理、定义判断、类比推理、逻辑判断。</div><div><strong>常见题型</strong>位置、数量、属性、加强削弱、真假推理。</div><div><strong>学习方法</strong>建立题型清单，每类题固定识别入口。</div><div><strong>提分建议</strong>图推先看规律维度，逻辑题先找论点论据。</div><div><strong>每日节奏</strong>30-40 题，集中复盘高频题型。</div></div></article>
+          <article class="module-card"><h2>资料分析</h2><div class="module-columns"><div><strong>考什么</strong>增长率、比重、平均数、倍数、综合分析。</div><div><strong>常见题型</strong>现期、基期、增长量、两期比重。</div><div><strong>学习方法</strong>公式先熟，再练速算和选项敏感度。</div><div><strong>提分建议</strong>资料分析是性价比模块，优先稳准确率。</div><div><strong>每日节奏</strong>2-3 篇资料，限时 18-24 分钟。</div></div></article>
+          <article class="module-card"><h2>数量关系</h2><div class="module-columns"><div><strong>考什么</strong>工程、行程、排列组合、概率、几何。</div><div><strong>常见题型</strong>方程、特值、代入排除、最值问题。</div><div><strong>学习方法</strong>先掌握基础模型，难题学会取舍。</div><div><strong>提分建议</strong>不要被数量拖垮节奏，先拿基础题。</div><div><strong>每日节奏</strong>10-15 题，重点总结解题入口。</div></div></article>
+          <article class="module-card"><h2>常识判断</h2><div class="module-columns"><div><strong>考什么</strong>政治、法律、经济、科技、人文、地理。</div><div><strong>常见题型</strong>时政热点、法律常识、科技生活。</div><div><strong>学习方法</strong>碎片化积累，结合真题看高频方向。</div><div><strong>提分建议</strong>不建议大量死背，优先抓时政和基础法律。</div><div><strong>每日节奏</strong>10 分钟积累，套题中保持手感。</div></div></article>
+        </div>
       </section>
     </main>
     <script src="main.js"></script>
