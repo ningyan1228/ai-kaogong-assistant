@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI备考规划 - AI考公备考助手</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">AI</span>
+          <span>AI考公备考助手</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="planner.html">AI备考规划</a>
+          <a href="shenlun.html">申论素材库</a>
+          <a href="wrong.html">错题复盘</a>
+          <a href="about.html">关于本站</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="page-title">
+        <h1>AI备考规划</h1>
+        <p>填写你的备考情况，生成阶段目标、每周安排、每日任务和复盘建议。</p>
+      </section>
+
+      <section class="layout">
+        <form id="plannerForm" class="form-card">
+          <h2>备考信息</h2>
+          <div class="form-grid">
+            <div class="field">
+              <label for="exam">目标考试</label>
+              <select id="exam" name="exam">
+                <option value="国考">国考</option>
+                <option value="省考">省考</option>
+                <option value="事业编">事业编</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="cycle">备考周期</label>
+              <select id="cycle" name="cycle">
+                <option value="30天">30天</option>
+                <option value="60天">60天</option>
+                <option value="90天">90天</option>
+                <option value="半年">半年</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="dailyHours">每天学习时长</label>
+              <input id="dailyHours" name="dailyHours" type="text" placeholder="例如：2小时 / 工作日2小时，周末6小时">
+            </div>
+
+            <div class="field">
+              <label for="foundation">当前基础</label>
+              <select id="foundation" name="foundation">
+                <option value="小白">小白</option>
+                <option value="一般">一般</option>
+                <option value="有基础">有基础</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <div class="fieldset-title">薄弱模块</div>
+              <div class="checkbox-grid">
+                <label class="check-item"><input type="checkbox" name="weakModules" value="言语理解">言语理解</label>
+                <label class="check-item"><input type="checkbox" name="weakModules" value="判断推理">判断推理</label>
+                <label class="check-item"><input type="checkbox" name="weakModules" value="资料分析">资料分析</label>
+                <label class="check-item"><input type="checkbox" name="weakModules" value="数量关系">数量关系</label>
+                <label class="check-item"><input type="checkbox" name="weakModules" value="常识判断">常识判断</label>
+                <label class="check-item"><input type="checkbox" name="weakModules" value="申论">申论</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="employed">是否在职备考</label>
+              <select id="employed" name="employed">
+                <option value="no">否</option>
+                <option value="yes">是</option>
+              </select>
+            </div>
+
+            <div class="actions">
+              <button class="btn" type="submit">生成备考规划</button>
+              <button class="btn secondary" type="reset">重填</button>
+            </div>
+          </div>
+        </form>
+
+        <aside class="result-card">
+          <h2>AI规划结果</h2>
+          <div id="plannerResult" class="empty-state">
+            生成后会在这里展示阶段目标、每周安排、每日任务、行测训练建议、申论训练建议和复盘建议。
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
